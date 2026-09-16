@@ -13,3 +13,29 @@ In the future, the application will also be distributed as standalone executable
     venv\Scripts\activate
     pip install -e .
 ```
+
+## STRUCTURE
+
+```
+Nplayer/
+├── .git/
+├── .gitignore
+├── .venv/
+├── pyproject.toml
+├── README.md
+├── src/
+│ ├── NomadPlayer/
+│ │ ├── __init__.py
+│ │ ├── cli.py
+│ │ ├── library.py
+│ │ └── player.py
+│ └── nplayer.egg-info/
+│ ├── dependency_links.txt
+│ ├── entry_points.txt
+│ ├── PKG-INFO
+│ ├── SOURCES.txt
+│ └── top_level.txt
+└── tests/
+├── __init__.py
+└── test_library.py
+```
