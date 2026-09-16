@@ -3,13 +3,13 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nplayer"
+name = "nomadplayer"
 version = "0.1.0"
 description = "Lecteur musical minimaliste pour terminal"
 requires-python = ">=3.9"
 
 [project.scripts]
-Nplayer = "Nplayer.cli:main"
+Nplayer = "NomadPlayer.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
