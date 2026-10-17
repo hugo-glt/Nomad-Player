@@ -8,3 +8,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def display_music_file(mp3_files):
+    for file in mp3_files:
+        print(file)
