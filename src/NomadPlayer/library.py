@@ -1,5 +1,7 @@
 from pathlib import Path
 
+SUPPORTED_EXTENSIONS = {".mp3", ".flac", ".wav", ".ogg", ".m4a"}
+
 # Error message for path input validation
 def validate_library_path(path: str) -> Path:
     library_path = Path(path)
@@ -9,9 +11,8 @@ def validate_library_path(path: str) -> Path:
         raise ValueError(f"The specified path is not a directory: {library_path}")
     return library_path
 
-def display_audio_files(library_path):
-    path= Path(library_path)
-
-    if path.is_dir():
-        mp3_files = [file for file in path.iterdir()
-                    if file.is_file() and file.suffix.lower() == ".mp3"]
+def scan_audio_files(library_path: Path) -> list[Path]:
+    return [
+        file for file in library_path.rglob("*")
+        if file.is_file() and file.suffix.lower() in SUPPORTED_EXTENSIONS
+    ]
