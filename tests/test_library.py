@@ -53,6 +53,23 @@ class TestScanAudioFiles(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(scan_audio_files(Path(tmp)), [])
 
+    def test_results_are_sorted(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for name in ["c.mp3", "a.mp3", "b.mp3"]:
+                (root / name).touch()
+            names = [f.name for f in scan_audio_files(root)]
+            self.assertEqual(names, ["a.mp3", "b.mp3", "c.mp3"])
+
+    def test_complex_file_names(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            names = ["My Song (live).mp3", "Été & Hiver.flac", "l'ami #1 [remix].ogg"]
+            for name in names:
+                (root / name).touch()
+            found = {f.name for f in scan_audio_files(root)}
+            self.assertEqual(found, set(names))
+
 
 if __name__ == "__main__":
     unittest.main()
