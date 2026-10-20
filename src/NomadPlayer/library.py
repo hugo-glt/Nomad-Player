@@ -12,7 +12,7 @@ def validate_library_path(path: str) -> Path:
     return library_path
 
 def scan_audio_files(library_path: Path) -> list[Path]:
-    return [
+    return sorted (
         file for file in library_path.rglob("*")
         if file.is_file() and file.suffix.lower() in SUPPORTED_EXTENSIONS
-    ]
+    )
